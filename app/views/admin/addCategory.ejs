@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../partials/head'); %>
+    <title>Home</title>
+</head>
+
+<body>
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <form method="POST" action="/admin/category/new">
+          <legend>Adicionar categoria </legend>
+          <div>
+            <% if (typeof erros !=='undefined' && erros.length> 0) { %>
+              <% for (var i=0; i < erros.length; i++) { %>
+                <div class="alert alert-danger">
+                  <%= erros[i].text %>
+                </div>
+                <% } %>
+              <% } %>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="name">
+          </div>
+          <div class="mb-3">
+            <label for="slug" class="form-label">Slug</label>
+            <input type="text" class="form-control" id="slug" name="slug" placeholder="slug da categoria">
+          </div>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+<script src="/js/bootstrap.min.js"></script>
+
+</html>

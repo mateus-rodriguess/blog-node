@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>Home</title>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    
+    <div class="container">
+        <%- include('../partials/msg'); %>
+        
+        <h2>Lista de categoria</h2>
+        <% for (var i = 0; i < category.length; i++) { %>
+            <div class="card mt-1">
+            <div class="card-body">
+                <a href="/admin/category/<%= category[i].id %>"><h3><%= category[i].name %></h3></a>
+                <p><%= category[i].date %></p>  
+            </div>
+            <a href="/admin/category/edit/<%= category[i].id %>"><button type="submit" class="btn btn-success">Editar categoria</button></a>
+            <form action="/admin/category/delete" method="POST">
+                <input type="hidden" name="id" value="<%= category[i].id%>">
+                <button type="submit" class="btn btn-danger">Excluir </button>
+            </form>
+        </div>
+        <% } %>
+        <a href="/admin/category/add"><button type="submit" class="btn btn-dark">Adicioanr categoria</button></a> 
+   
+    </div>
+
+</body>
+<script src="/js/bootstrap.min.js"></script>
+</html>

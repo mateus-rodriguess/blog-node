@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>Edit categoria</title>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <div class="container">
+        <%- include('../partials/msg'); %>
+        <div class="card">
+            <div class="card-body">
+                <form method="POST" action="/admin/category/edit/">
+                    <input type="hidden" name="id" value="<%= category._id %>">
+                    <legend>Editar categoria: <%= category.name %></legend>
+
+                    <div>
+                        <% if (typeof erros !=='undefined' && erros.length> 0) { %>
+                            <% for (var i=0; i < erros.length; i++) { %>
+                                <div class="alert alert-danger">
+                                    <%= erros[i].text %>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="name"
+                            value="<%= category.name %>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="slug" class="form-label">Slug</label>
+                        <input type="text" class="form-control" id="slug" name="slug"
+                            placeholder="slug da categoria" value="<%= category.slug %>">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="/js/bootstrap.min.js"></script>
+
+</html>
