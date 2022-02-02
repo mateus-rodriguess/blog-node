@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>post</title>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    
+    <div class="container">
+        <%- include('../partials/msg'); %>
+        
+        <h2>Lista de postagem</h2>
+        <% for (var i = 0; i < post.length; i++) { %>
+            <div class="card mt-1">
+            <div class="card-body">
+                <a href="/admin/post/<%= post[i].id %>"><h3><%= post[i].title %></h3></a>
+                <p><%= post[i].date %></p>  
+                <p><%= post[i].content %></p>
+                <p>Categoria: <%= post[i].category.name %></p>
+  
+            </div>
+            <a href="/admin/post/edit/<%= post[i].id %>"><button type="submit" class="btn btn-success">Editar post</button></a>
+          
+                
+            <a href="/admin/post/delete/<%= post[i].id %>"><button type="submit" class="btn btn-danger">Excluir </button></a> 
+        </div>
+        <% } %>
+        <a href="/admin/post/add"><button type="submit" class="btn btn-dark">Adicioanr post</button></a> 
+   
+    </div>
+
+</body>
+<script src="/js/bootstrap.min.js"></script>
+</html>

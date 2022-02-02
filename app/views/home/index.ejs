@@ -3,19 +3,62 @@
 
 <head>
     <%- include('../partials/head'); %>
-        <title>Home</title>
+        <title>Blog</title>
 </head>
 
 <body>
     <header>
         <%- include('../partials/header'); %>
     </header>
-    <%- include('../partials/msg'); %>
     
     <div class="container">
-        <h1>ok</h1>
-    </div>
+        <!-- Jumbotron -->
+        <% if (typeof error !=='undefined' && error.length> 0) { %>
+                    <%= error %>
+        <% } %>
+        <%- include('../partials/msg'); %>
+        <div class="p-4 shadow-4 rounded-3" style="background-color: hsl(237, 70%, 69%);">
+            <h2>Bem vindo ao blog</h2>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Ab amet exercitationem veniam? Amet saepe voluptate animi dolorum sunt.
+                Architecto delectus ipsum dignissimos quas at. Architecto mollitia odit
+                recusandae quo consequatur?
+            </p>
 
+            <hr class="my-4" />
+
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Ab amet exercitationem veniam? Amet saepe voluptate animi dolorum sunt.
+                Architecto delectus ipsum dignissimos quas at. Architecto mollitia odit
+                recusandae quo consequatur?
+            </p>
+            <% if (!user) { %>
+                <a href="/account/register"> <button type="button" class="btn btn-primary">
+                    Crie uma conta 
+                </button>
+            </a>
+              <% } %>
+       
+        </div>
+        <% for (var i = 0; i < post.length; i++) { %>
+        <div class="card mt-1">
+            <div class="card-body">
+               
+                <a href="/admin/post/<%= post[i].id %>"><h3><%= post[i].title %></h3></a>
+                <p><%= post[i].description %></p>
+                <a href="/post/<%= post[i].slug %>"><button class="btn btn-success">Ler mais</button></a>
+                <hr>
+                <small>Categoria: <%= post[i].category.name %></small>
+                <br>
+                <small>Data de publicação: <%= post[i].date %></small>
+            </div>
+        </div>
+        <% } %>
+    
+        
+    </div>
 </body>
 <script src="/js/bootstrap.min.js"></script>
 </html>

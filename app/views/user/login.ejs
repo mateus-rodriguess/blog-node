@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>Blog</title>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <div class="container">
+        <%- include('../partials/msg'); %>
+        <div>
+            <% if (typeof erros !=='undefined' && erros.length> 0) { %>
+                <% for (var i=0; i < erros.length; i++) { %>
+                    <div class="alert alert-danger">
+                        <%= erros[i].text %>
+                    </div>
+                <% } %>
+            <% } %>
+            
+        </div>
+        <div class="card">
+            <div class="card-body">
+              
+                <form action="/account/login" method="POST">
+                    <div class="mb-3">
+                        <legend>Fazer login</legend>
+                        <% if (error) { %>
+                            <div class="alert alert-danger">
+                                <%= error %>
+                            </div>
+                          <% } %>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" class="form-control" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Senha</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Senha" required>            
+                    </div>
+                
+                    <button type="submit" class="btn btn-success">login</button>
+                </form>
+                <a href="/account/register">Não tenho login</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/bootstrap.min.js"></script>
+
+</html>

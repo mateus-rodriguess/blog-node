@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const UserSchema = mongoose.Schema({
     firstName: {
         type: String,
@@ -10,24 +11,21 @@ const UserSchema = mongoose.Schema({
     },
     email: {
         type: String,
+        require: true,
+        unique: true,
+        dropDups: true
+
+    },
+    password: {
+        type: String,
         require: true
     },
-    age: {
-        type: Number,
+    isAdmin:{
+        type: Boolean,
+        default: false
     }
-
 })
 
-mongoose.model('user', UserSchema)
-// const Mateus = mongoose.model("user")
+const User = mongoose.model('user', UserSchema)
 
-// new Mateus({
-//     firstName: "mateus",
-//     lastName: "rodrigues",
-//     email: "ok@gmail.com",
-//     age: 12
-// }).save().then( ()=> {
-//     console.log("salvo")
-// }).catch((err)=>{
-//     console.log("erro: "+ err)
-// }) 
+module.exports =  User

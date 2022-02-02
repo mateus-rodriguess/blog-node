@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>Blog</title>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    
+    <div class="container">
+        <!-- Jumbotron -->
+        <%- include('../partials/msg'); %>
+        
+        <% for (var i = 0; i < post.length; i++) { %>
+        <div class="card mt-1">
+            <div class="card-body">
+               
+                <a href="/admin/post/<%= post[i].id %>"><h3><%= post[i].title %></h3></a>
+                <p><%= post[i].description %></p>
+                <a href="/post/<%= post[i].slug %>"><button class="btn btn-success">Ler mais</button></a>
+                <hr>
+          
+                <br>
+                <small>Data de publicação: <%= post[i].date %></small>
+            </div>
+        </div>
+        <% } %>
+    
+        
+    </div>
+</body>
+<script src="/js/bootstrap.min.js"></script>
+</html>

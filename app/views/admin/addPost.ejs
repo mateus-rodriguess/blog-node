@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../partials/head'); %>
+    <title>Home</title>
+</head>
+
+<body>
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <form method="POST" action="/admin/post/new">
+          <legend>Adicionar Post </legend>
+          <div>
+            <% if (typeof erros !=='undefined' && erros.length> 0) { %>
+              <% for (var i=0; i < erros.length; i++) { %>
+                <div class="alert alert-danger">
+                    <%= erros[i].text %>
+                </div>
+            <% } %>
+              <% } %>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Titulo</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Titulo" required>
+          </div>
+          <div class="mb-3">
+            <label for="slug" class="form-label">Slug</label> 
+            <input type="text" class="form-control" id="slug" name="slug" placeholder="slug da categoria" required>
+          </div>
+          <div class="md-3">
+              <label for="description">Descrição</label>
+              <input type="text" name="description" id="description" class="form-control" required>
+            </div>
+            <div class="md-3">
+                <label for="content">Conteudo</label>
+                <textarea name="content" id="content" cols="60" rows="3" class="form-control" required></textarea>
+            </div>
+            <div class="md-3">
+                <label for="category">Categorias</label>
+                <select name="category" id="category"  class="form-control" required>
+                    <% if (typeof category !=='undefined' && category.length> 0) { %>
+                        <% for (var i=0; i < category.length; i++) { %>
+                            <option value="<%= category[i]._id %>"> <%= category[i].name %></option>
+                        <% } %>
+                   
+                    <% } else{ %>  
+                        <option value="0"> nenhuma categoria registrada</option>
+                     <% } %>%>
+                </select>
+            </div>
+          <button type="submit" class="btn btn-primary mt-2">Salvar</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+<script src="/js/bootstrap.min.js"></script>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>Categoria</title>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+    
+    <div class="container">
+        <%- include('../partials/msg'); %>
+        
+       
+        <% for (var i = 0; i < category.length; i++) { %>
+            <div class="card mt-1">
+                <div class="card-body">
+                    <a href="/category/<%=category[i].slug%>"><h3><%= category[i].name %></h3></a>
+                    <small>Data de publicação: <%= category[i].date %></small>
+                </div>
+            </div>
+            <% } %>
+    </div>
+
+</body>
+<script src="/js/bootstrap.min.js"></script>
+</html>
