@@ -21,7 +21,7 @@ app.use(passport.initialize())
 app.use(passport.session());
 
 require("./auth").passport
-require('./auth')(passport);
+
 // flash
 app.use(flash())
 
