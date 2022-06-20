@@ -1,7 +1,7 @@
 var app = require('./config/server');
 
-const POSRT = 3000
-app.listen(POSRT, function(){
+const PORT = 3000
+app.listen(PORT, function(){
     console.log("Servidor ON");
 });
 
